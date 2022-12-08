@@ -1,5 +1,1 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/
-one:
-  name: String
-  surname: String
-  email: String
