@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    @user = User.find(params[:id])
+    
   end
 
   # GET /users/new
@@ -23,7 +25,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "Benvenuto in Community Content Collector!"
       redirect_to @user
     else
       render 'new', status: :unprocessable_entity
@@ -61,6 +63,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :surname, :email)
+      params.require(:user).permit(:name, :email, :password,:password_confirmation)
     end
 end
