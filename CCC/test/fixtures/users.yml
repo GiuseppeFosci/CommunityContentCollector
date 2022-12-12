@@ -1,1 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/
+michael:
+  name: Michael 
+  email: michael.prova@uniroma1.it
+  surname: example
+  password_digest: <%= User.digest('password') %>
