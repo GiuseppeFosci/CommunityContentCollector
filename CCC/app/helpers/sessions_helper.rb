@@ -2,6 +2,7 @@ module SessionsHelper
     # Logs in the given user.
     def log_in(user)
         session[:user_id] = user.id
+        session[:session_token]=user.session_token
     end
     # Remembers a user in a persistent session.
     def remember(user)
