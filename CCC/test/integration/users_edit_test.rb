@@ -6,6 +6,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   end
 
   test "unsuccessful edit" do
+    log_in_as(@user)
     get edit_user_path(@user)
     assert_template 'users/edit'
     patch user_path(@user), params: { user: { name: "", surname: "", email: "foo@invalid", password: "foo", password_confirmation: "bar" } }
@@ -13,10 +14,11 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   end
 
   test "successful edit" do
+    log_in_as(@user)
     get edit_user_path(@user)
     assert_template 'users/edit'
     name = "Foo"
-    surname= "Bar"
+    surname = "Bar"
     email = "nome.prova@uniroma1.it"
     patch user_path(@user), params: { user: { name: name, surname: surname, email: email, password: "", password_confirmation: "" } }
     assert_not flash.empty?
