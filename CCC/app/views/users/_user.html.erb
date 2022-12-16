@@ -3,4 +3,10 @@
   <%= link_to user do%>
     <%= user.name%> <%= user.surname %>
   <%end%>
+
+<br>
+
+  <% if current_user.admin? && !current_user?(user) %>
+    <%= link_to "Elimina", user, data: {"turbo-method": :delete, turbo_confirm: "Sei sicuro?"}, class: "link-elimina" %>
+  <% end %>
 </li>

@@ -4,6 +4,7 @@ michael:
   email: michael.prova@uniroma1.it
   surname: example
   password_digest: <%= User.digest('password') %>
+  admin: true
 
 archer:
   name: Sterling
