@@ -28,10 +28,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      reset_session
-      log_in @user
-      flash[:success] = "Benvenuto in Community Content Collector!"
-      redirect_to @user
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "Controlla la tua email per attivare l'account"
+      redirect_to root_url
     else
       render 'new', status: :unprocessable_entity
     end
