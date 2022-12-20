@@ -16,4 +16,14 @@ class PostTest < ActiveSupport::TestCase
     @post.user_id = nil
     assert_not @post.valid?
   end
+  
+  test "content should be present" do
+    @post.content = " "
+    assert_not @post.valid?
+  end
+  
+  test "content should be at most 10000 characters" do
+    @post.content = "a" * 10001
+    assert_not @post.valid?
+  end
 end
