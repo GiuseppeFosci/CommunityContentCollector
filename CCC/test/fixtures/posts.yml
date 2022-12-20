@@ -1,5 +1,3 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 orange:
   content: "I just ate an orange!"
 
@@ -20,3 +18,9 @@ most_recent:
   content: "Writing a short test"
   created_at: <%= Time.zone.now %>
   user: michael
+
+   <% 30.times do |n| %> 
+  micropost_<%= n %>:
+     content: <%= Faker::Lorem.sentence(word_count:5) %>
+     created_at: <%= 42.days.ago %>
+     user: michael<% end %>
