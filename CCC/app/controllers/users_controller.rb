@@ -66,14 +66,6 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :surname, :email, :password, :password_confirmation)
     end
     
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Effettua l'accesso per modificare"
-        redirect_to login_url, status: :see_other
-      end
-    end
-
     # Confirms the correct user.    
     def correct_user
       @user = User.find(params[:id])

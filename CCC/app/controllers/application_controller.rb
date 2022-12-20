@@ -10,5 +10,15 @@ class ApplicationController < ActionController::Base
         session[:user_id] = user.id
     end
 
+    private
+    
+    # Confirms a logged-in user.
+    def logged_in_user
+        unless logged_in?
+            store_location
+            flash[:danger] = "Perfavore accedi."
+            redirect_to login_url, status: :see_other
+        end
+    end
 
 end
