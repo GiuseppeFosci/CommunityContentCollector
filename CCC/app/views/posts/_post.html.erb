@@ -4,5 +4,11 @@
   <span class="content"><%= post.content %></span>
   <span class="timestamp">
     Pubblicato <%= time_ago_in_words(post.created_at) %> fa.
+  
+  <% if current_user?(post.user) %>
+    <%= link_to "delete", post, data: { "turbo-method": :delete, turbo_confirm: "Sei sicuro?" } %>
+  <% end %>
+ 
+ 
   </span>
 </li>
