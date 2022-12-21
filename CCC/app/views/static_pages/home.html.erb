@@ -1,4 +1,17 @@
 <% provide(:title, "Home") %>
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="post_form">
+        <%= render 'shared/post_form' %>
+      </section>
+    </aside>
+  </div>
+<% else %>
+
 <div class="center jumbotron">
   <h1>Benvenuto su CommunityContentCollector</h1>
   
@@ -12,3 +25,4 @@
   <%= link_to "Registrati ora!", signup_path, class: "btn btn-lg btn-primary" %>
 </div>
 
+<% end %>

@@ -3,12 +3,12 @@
 <div class="row">
 <div class="col-md-6 col-md-offset-3">
 <%= form_with(model: @user) do |f| %>
-<%= render 'shared/error_messages' %>
+    <%= render 'shared/error_messages', object: f.object %>
 
-<%= f.label :Nome %>
-<%= f.text_field :name, class: 'form-control' %>
+    <%= f.label :Nome %>
+    <%= f.text_field :name, class: 'form-control' %>
 
-<%= f.label :Cognome %>
+    <%= f.label :Cognome %>
 <%= f.text_field :surname, class: 'form-control' %>
 
 <%= f.label :email, "Email istituzionale (@uniroma1.it)"   %>
