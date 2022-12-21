@@ -3,7 +3,7 @@
   <span class="user"><%= link_to post.user.name, post.user %></span>
   <span class="content"><%= post.content %></span>
   <span class="timestamp">
-    Pubblicato <%= time_ago_in_words(post.created_at) %> fa.
+    Pubblicato da <%= time_ago_in_words(post.created_at) %> .
   
   <% if current_user?(post.user) %>
     <%= link_to "delete", post, data: { "turbo-method": :delete, turbo_confirm: "Sei sicuro?" } %>
