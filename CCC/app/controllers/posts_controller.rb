@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     def create
         @post = current_user.posts.build(post_params)
         if @post.save
-            flash[:success] = "Micropost created!"
+            flash[:success] = "Post creato!"
             redirect_to root_url
         else
             @feed_items = current_user.feed.paginate(page: params[:page])
@@ -14,13 +14,12 @@ class PostsController < ApplicationController
     
     def destroy
         @post.destroy
-        flash[:success] = "Micropost deleted"   
+        flash[:success] = "Post eliminato"   
         if request.referrer.nil?
             redirect_to root_url, status: :see_other
         else
             redirect_to request.referrer, status: :see_other
-    end
-    
+        end
     end
     
     private
