@@ -3,6 +3,8 @@ class PostsController < ApplicationController
     before_action :correct_user,only: :destroy
     def create
         @post = current_user.posts.build(post_params)
+
+        @post.files.attach(params[:post] [:files])
         if @post.save
             flash[:success] = "Post creato!"
             redirect_to root_url
@@ -25,7 +27,7 @@ class PostsController < ApplicationController
     private
     
     def post_params
-        params.require(:post).permit(:content)
+        params.require(:post).permit(:content, :file => [])
     end
 
     def correct_user

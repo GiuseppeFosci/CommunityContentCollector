@@ -1,7 +1,16 @@
 <li id="post-<%= post.id %>">
   <%= link_to gravatar_for(post.user, size: 50), post.user %>
   <span class="user"><%= link_to post.user.name, post.user %></span>
-  <span class="content"><%= post.content %></span>
+  <span class="content">
+    <%= post.content %>
+    <%if post.files.attached? %>
+      <% post.files.each do |f| %>
+        <li>
+          <%= image_tag f.preview(resize_to_fit: [100, 100]) %>
+        </li>
+      <% end %>
+    <% end %>
+  </span>
   <span class="timestamp">
     Posted <%= time_ago_in_words(post.created_at) %> ago.
   

@@ -5,4 +5,7 @@
     </div>
 
     <%= f.submit "Post", class: "btn btn-primary" %>
+    <span class="file">
+      <%= f.file_field :files, :multiple => true %>
+    </span>
 <% end %>
