@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
+  has_many :active_relationships, class_name: "Relationship",
+  foreign_key: "follower_id", dependent: :destroy
   before_save :downcase_email
   before_create :create_activation_digest
   validates :name, presence: true, length: {maximum: 50}
