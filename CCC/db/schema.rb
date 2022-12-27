@@ -39,6 +39,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_161813) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "microposts", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text "content"
     t.integer "user_id", null: false

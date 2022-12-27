@@ -1,26 +1,52 @@
 <% provide(:title, 'Sign up') %>
 <h1>Registrati</h1>
 <div class="row">
-<div class="col-md-6 col-md-offset-3">
-<%= form_with(model: @user) do |f| %>
+  <div class="col-md-6 col-md-offset-3">
+  <%= form_with(model: @user) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
 
     <%= f.label :Nome %>
     <%= f.text_field :name, class: 'form-control' %>
 
     <%= f.label :Cognome %>
-<%= f.text_field :surname, class: 'form-control' %>
+    <%= f.text_field :surname, class: 'form-control' %>
 
-<%= f.label :email, "Email istituzionale (@uniroma1.it)"   %>
-<%= f.email_field :email, class: 'form-control' %>
+    <%= f.label :email, "Email istituzionale (@uniroma1.it)"   %>
+    <%= f.email_field :email, class: 'form-control' %>
 
-<%= f.label :password %>
-<%= f.password_field :password, class: 'form-control' %>
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'form-control' %>
 
-<%= f.label :password_confirmation, "Conferma Password" %>
-<%= f.password_field :password_confirmation, class: 'form-control' %>
-<%= f.submit "Crea il mio account", class: "btn btn-primary" %>
+    <%= f.label :password_confirmation, "Conferma Password" %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
+    <%= f.submit "Crea il mio account", class: "btn btn-primary" %>
 
-<% end %>
+    <% end %>
+    
+    <br>
+    <div class="google-signup">
+      <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+      <div id="g_id_onload"
+        data-client_id="676271951973-1nhi134ag2edhefulklfqinnbkbajshc.apps.googleusercontent.com"
+        data-context="signup"
+        data-ux_mode="popup"
+        data-login_uri="/google-users"
+        data-auto_prompt="false">
+      </div>
+
+      <div class="g_id_signin"
+        data-type="standard"
+        data-shape="rectangular"
+        data-theme="outline"
+        data-text="signin_with"
+        data-size="large"
+        data-locale="it"
+        data-logo_alignment="left">
+      </div>
+    </div>
+    
+  </div>
 </div>
-</div>
+
+

@@ -25,6 +25,22 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def google_create
+    @user = User.new(google_params)
+    puts google_params[:password]
+    if @user.save
+      redirect_to edit_account_activation_url(@user.activation_token, email: @user.email)
+      puts "Utente valido"
+    else
+      if @user.valid?
+        flash[:warning] = "Email già registrata, procedi al login"
+        render "/sessions/new", status: :unprocessable_entity
+      else
+        render "new", status: :unprocessable_entity
+      end
+    end
+  end
+
   # POST /users or /users.json
   def create
     @user = User.new(user_params)
@@ -79,6 +95,14 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :surname, :email, :password, :password_confirmation)
     end
+    
+    def google_params
+      pay =(Google::Auth::IDTokens.verify_oidc params[:credential], aud: "676271951973-1nhi134ag2edhefulklfqinnbkbajshc.apps.googleusercontent.com")
+      payload=pay.values
+      pass = BCrypt::Password.create(payload[5])
+      ret = ActionController::Parameters.new({"user": {"name": payload[10], "surname": payload[11], "email": payload[5], "password": pass, "password_confirmation": ""}})
+      ret.require(:user).permit(:name, :surname, :email, :password) #, :password_confirmation)
+    end 
     
     # Confirms the correct user.    
     def correct_user

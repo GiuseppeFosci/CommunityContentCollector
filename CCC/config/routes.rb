@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'password_resets/edit'
   get 'sessions/new'
   get 'users/new'
+
+  post "/google-users", to: "users#google_create"
   
   root "static_pages#home" 
   get "/help", to: "static_pages#help"
