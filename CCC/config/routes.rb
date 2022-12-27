@@ -12,12 +12,17 @@ Rails.application.routes.draw do
   get"/login",to: "sessions#new"
   post"/login",to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
  
  
   resources :posts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
   get '/posts', to: 'static_pages#home'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
