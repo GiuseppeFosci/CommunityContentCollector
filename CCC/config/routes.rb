@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   get 'sessions/new'
   get 'users/new'
 
+  #Gestione login e signup di loogle
   post "/google-users", to: "users#google_create"
+  post "/google-login", to: "sessions#google_create"
+  get "/google-login", to: "sessions#new"
   
   root "static_pages#home" 
   get "/help", to: "static_pages#help"
