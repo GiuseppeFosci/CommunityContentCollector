@@ -4,7 +4,10 @@
     <section class="user_info">
       <h1>
         <%= gravatar_for @user %>
-        <%= @user.name  %> <%= @user.surname  %>
+        <%= @user.name  %> <%= @user.surname %>
+        <% if @user.admin? %>
+          <div class="admin">(Amministratore)</div>
+        <% end %>
       </h1>
     </section>
     <section class="stats">
