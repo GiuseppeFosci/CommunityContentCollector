@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     end
     
     def destroy
-        post.find(params[:id]).destroy
+        @post.destroy
         flash[:success] = "Post eliminato"   
         if request.referrer.nil?
             redirect_to root_url, status: :see_other
@@ -31,10 +31,14 @@ class PostsController < ApplicationController
         params.require(:post).permit(:content, :file => [])
     end
 
+    #def admin_user
+      #@post = Post.find_by(id: params[:id])
+      #redirect_to root_url, status: :see_other if @post.nil? || !current_user.admin?
+    #end
 
     def correct_user
-      redirect_to(root_url, status: :see_other) unless
-      current_user.admin?
+      @post = current_user.posts.find_by(id: params[:id])
+      redirect_to root_url, status: :see_other if @post.nil?
     end
 
 end

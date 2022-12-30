@@ -5,10 +5,10 @@
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name  %> <%= @user.surname %>
-        <% if @user.admin? %>
-          <div class="admin">(Amministratore)</div>
-        <% end %>
       </h1>
+      <% if @user.admin? %>
+          <p class="admin">(Amministratore)</p>
+      <% end %>
     </section>
     <section class="stats">
       <%= render 'shared/stats' %>
