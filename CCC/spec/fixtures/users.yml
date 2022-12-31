@@ -1,0 +1,43 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/
+michael:
+  name: Michael 
+  email: michael.prova@uniroma1.it
+  surname: example
+  password_digest: <%= User.digest('password') %>
+  admin: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+archer:
+  name: Sterling
+  email: sterling.prova@uniroma1.it
+  surname: archer
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+  
+lana:
+  name: Lana 
+  surname: Kane
+  email: hands.example@uniroma1.it
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+malory:
+  name: Malory 
+  surname: Archer
+  email: boss.example@uniroma1.it
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+  
+   <% 30.times do |n| %>
+user_<%= n %>:
+  name: <%= "User#{n}" %>
+  surname: <%= "User#{n}" %>
+  email: <%= "user.12345#{n}@studenti.uniroma1.it" %>
+  password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+   <% end %>
