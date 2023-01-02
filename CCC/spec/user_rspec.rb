@@ -70,7 +70,7 @@ RSpec.describe User, type: :model do
         
         it "associated posts should be destroyed" do
             subject.save
-            subject.posts.create!(content: "Lorem ipsum")
+            subject.posts.create!(content: "Lorem ipsum", category: "Ingengeria")
             assert_difference 'Post.count', -1 do
                 subject.destroy
             end
