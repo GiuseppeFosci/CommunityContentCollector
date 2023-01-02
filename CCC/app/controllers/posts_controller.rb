@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     def create
         @post = current_user.posts.build(post_params)
 
-        @post.files.attach(params[:post] [:files])
+        @post.files.attach(params[:post][:files])
         if @post.save
             flash[:success] = "Post creato!"
             redirect_to root_url
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
     private
     
     def post_params
-        params.require(:post).permit(:content, :file => [])
+        params.require(:post).permit(:content, :category, :file => [])
     end
 
     #def admin_user

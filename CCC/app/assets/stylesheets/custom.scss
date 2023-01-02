@@ -239,6 +239,10 @@ input, textarea, select, .uneditable-input {
   margin-left: 0;
 }
 
+.post-category{
+  color: #CC5500;
+ }
+
 #error_explanation {
   color: red;
   ul {
@@ -290,16 +294,22 @@ input, textarea, select, .uneditable-input {
     }
     .content {
       display: block;
-      margin-left: 90px;
+      margin-left: 60px;
       img {
         display: block;
         padding: 5px 0;
       }
     }
+    
+    .category {
+      display: block;
+      margin-left: 60px;
+    }
+    
     .timestamp {
       color: $gray-light;
       display: block;
-      margin-left: 90px;
+      margin-left: 60px;
     }
   }
   

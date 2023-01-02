@@ -24,9 +24,10 @@ class PostsInterfaceTest < PostsInterface
   end
   
   test "should create a post on valid submission" do
+    category = "Ingegneria"
     content = "This post really ties the room together"
     assert_difference 'Post.count', 1 do
-      post posts_path, params: { post: { content: content } }
+      post posts_path, params: { post: { content: content, category: category } }
     end
     assert_redirected_to root_url
     follow_redirect!

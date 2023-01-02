@@ -5,7 +5,7 @@ class PostTest < ActiveSupport::TestCase
   def setup
     @user = users(:michael)
     # This code is not idiomatically correct.
-    @post = @user.posts.build(content: "Test di post")
+    @post = @user.posts.build(content: "Test di post", category: "Economia")
   end
   
   test "should be valid" do
