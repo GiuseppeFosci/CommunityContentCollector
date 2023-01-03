@@ -76,20 +76,20 @@ RSpec.describe User, type: :model do
             end
         end
         
-        # it "should follow and unfollow a user" do
-        #     michael = users(:michael)
-        #     archer = users(:archer)
-        #     expect(michael).to_not followed(archer)
-        #     michael.follow(archer)
-        #     expect(michael).to follow(archer)
-        #     assert archer.followers.include?(michael)
-        #     michael.unfollow(archer)
-        #     assert_not michael.following?(archer)
+        it "should follow and unfollow a user" do
+            michael = users(:michael)
+            archer = users(:archer)
+            expect(michael.following?(archer)).to be false
+            michael.follow(archer)
+            expect(michael.following?(archer)).to be true
+            assert archer.followers.include?(michael)
+            michael.unfollow(archer)
+            expect(michael.following?(archer)).to be false
             
-        #     # Users can't follow themselves.
-        #     michael.follow(michael)
-        #     assert_not michael.following?(michael)
-        # end
+            # Users can't follow themselves.
+            michael.follow(michael)
+            expect(michael.following?(michael)).to be false
+        end
             
         it "feed should have the right posts" do
             michael = users(:michael)
@@ -108,7 +108,7 @@ RSpec.describe User, type: :model do
             
             # Posts from non-followed user
             archer.posts.each do |post_unfollowed|
-                assert_not michael.feed.include?(post_unfollowed)
+                expect(michael.feed).to_not include(post_unfollowed)
             end
         end
     end

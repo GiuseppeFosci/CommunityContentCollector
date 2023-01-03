@@ -90,6 +90,8 @@ group :test do
   gem "webdrivers"
   gem "minitest"
   gem "minitest-reporters"
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
 end
 
 

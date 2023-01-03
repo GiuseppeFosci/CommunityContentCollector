@@ -1,5 +1,4 @@
 require "rails_helper"
-require "rails_helper"
 require "rspec_helper"
 
 RSpec.configure do |c|
