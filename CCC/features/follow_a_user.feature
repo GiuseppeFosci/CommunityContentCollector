@@ -4,6 +4,6 @@ Feature: I want to follow a user
   so that i can follow another user
 
 Scenario: Follow a user
-  Given I'm logged in
+  Given I am logged in
   When I click the "Segui" button
   Then I should see the "Smetti di seguire" button 
