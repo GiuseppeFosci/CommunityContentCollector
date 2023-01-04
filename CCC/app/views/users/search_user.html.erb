@@ -1,0 +1,10 @@
+<% provide(:title, 'Risultato ricerca') %>
+<h1>Utenti trovati: <%= @users.count %></h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <%= render @users %>
+</ul>
+
+<%= will_paginate %>

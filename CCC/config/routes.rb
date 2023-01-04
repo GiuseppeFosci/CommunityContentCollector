@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   get 'sessions/new'
   get 'users/new'
 
+  #Ricerca
+  get 'search', to: 'static_pages#search'
+  get 'search_user', to: 'users#search_user'
+  get 'search_post', to: 'posts#search_post'
+
   #Gestione login e signup di loogle
   post "/google-users", to: "users#google_create"
   post "/google-login", to: "sessions#google_create"

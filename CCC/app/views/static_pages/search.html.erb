@@ -1,0 +1,33 @@
+<% provide(:title, "Cerca") %>
+<h1>Cerca su CCC</h1>
+<div class="container">
+  <div class="row">
+		<div class="col-md-5 col-lg-5">
+		<h4 align="center">Cerca utente</h4>
+		<%= form_with url: "search_user", method: "GET" do |f| %>
+			
+			<%= f.label :name, "Nome" %>
+			<%= f.text_field :name, class: 'form-control' %>
+
+			<%= f.label :surname, "Cognome" %>
+			<%= f.text_field :surname, class: 'form-control' %>
+			<%= f.submit "Cerca utente", class: 'btn btn-primary' %>
+		<% end %>
+		</div>
+		
+		<div class="col-md-2 col-lg-2"></div>
+		
+		<div class="col-md-5 col-lg-5">
+		<h4 align="center">Cerca post</h4>
+		<%= form_with url: "search_post", method: "GET" do |f| %>
+
+			<%= f.label :content, "Parole chiave" %>
+			<%= f.text_field :content, class: 'form-control' %>
+      
+      <%= f.label :category, "Categoria" %>
+			<%= f.select(:category, [["Ingegneria", "Ingegneria"], ["Economia", "Economia"]]) %>
+			<%= f.submit "Cerca post", class: 'btn btn-primary' %>
+		<% end %>
+		</div>  
+	</div>
+</div>

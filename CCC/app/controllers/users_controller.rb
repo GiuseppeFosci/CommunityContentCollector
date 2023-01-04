@@ -4,12 +4,12 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
   skip_before_action :verify_authenticity_token, only: :google_create
 
-  # GET /users or /users.json
+  # GET /users 
   def index
     @users = User.where(activated: true).paginate(page: params[:page])
   end
 
-  # GET /users/1 or /users/1.json
+  # GET /users/[:id]
   def show
     @user = User.find(params[:id])
     redirect_to root_url and return unless @user.activated?
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  # GET /users/1/edit
+  # GET /users/[:id]/edit
   def edit
     @user = User.find(params[:id])
   end
@@ -84,6 +84,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow', status: :unprocessable_entity
+  end
+
+  #Search user
+  def search_user
+    @users = User.where("name LIKE ? OR surname LIKE ?", params[:name], params[:surname]).paginate(page: params[:page]) 
   end
 
   private

@@ -1,0 +1,10 @@
+<% provide(:title, 'Risultato ricerca') %>
+<h1>Post trovati: <%= @posts.count %></h1>
+
+<%= will_paginate %>
+
+<ul class="posts">
+  <%= render @posts %>
+</ul>
+
+<%= will_paginate %>

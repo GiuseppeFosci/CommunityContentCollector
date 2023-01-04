@@ -220,10 +220,11 @@ input, textarea, select, .uneditable-input {
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
-  }
-  input {
+}
+input {
   height: auto !important;
 }
+
 
 .checkbox {
   margin-top: -10px;

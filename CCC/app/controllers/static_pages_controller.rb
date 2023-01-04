@@ -6,6 +6,9 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def search
+  end
+
   def help
   end
 

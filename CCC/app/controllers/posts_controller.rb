@@ -25,6 +25,10 @@ class PostsController < ApplicationController
         end
     end
     
+    def search_post
+      @posts = Post.all.paginate(page: params[:page]) 
+    end
+    
     private
     
     def post_params
