@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     end
     
     def search_post
-      @posts = Post.all.paginate(page: params[:page]) 
+      @posts = Post.where("category LIKE ? AND content LIKE ?", params[:category], "%" + params[:content] + "%").paginate(page: params[:page]) 
     end
     
     private
@@ -34,11 +34,6 @@ class PostsController < ApplicationController
     def post_params
         params.require(:post).permit(:content, :category, :file => [])
     end
-
-    #def admin_user
-      #@post = Post.find_by(id: params[:id])
-      #redirect_to root_url, status: :see_other if @post.nil? || !current_user.admin?
-    #end
 
     def correct_user
       @post = current_user.posts.find_by(id: params[:id])
