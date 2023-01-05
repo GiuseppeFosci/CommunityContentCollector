@@ -1,0 +1,23 @@
+<% provide(:title, @post.user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @post.user %>
+        <%= @post.user.name  %> <%= @post.user.surname %>
+      </h1>
+      <% if @post.user.admin? %>
+          <p class="admin">(Amministratore)</p>
+      <% end %>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+  <h3>Post</h3>
+  <ol class="posts">
+    <%= render "post_single", post: @post %>
+  </ol>
+  </div>
+</div>
