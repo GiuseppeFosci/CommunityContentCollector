@@ -9,13 +9,15 @@
         <br>
         <% post.files.each do |f| %>
         <%= link_to f.filename, rails_blob_path(f, disposition: "attachment") %>
+        <div class="g-savetodrive"
+          data-src= "/"<%= rails_blob_path(f, only_path: true) %>
+          data-filename= <%= f.filename %>
+          data-sitename="CommunityContentCollector">
+        </div>
         <% end %>
     <% end %>
     </span>
     <span class="timestamp">Posted <%= time_ago_in_words(post.created_at) %> ago.
-    <% if current_user?(post.user) %>
-        <%= link_to "Elimina", post, data: { "turbo-method": :delete, turbo_confirm: "Sei sicuro?" } %>
-    <% end %>
     </span>
     <span class="comments">
     </span>
