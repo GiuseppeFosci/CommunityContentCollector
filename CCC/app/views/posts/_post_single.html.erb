@@ -19,6 +19,10 @@
     </span>
     <span class="timestamp">Posted <%= time_ago_in_words(post.created_at) %> ago.
     </span>
+    <span class="share-twitter">
+      <%= render 'twitter' %>
+    </span>
+    
     <span class="comments">
     </span>
     </li>
