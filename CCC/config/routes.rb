@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get 'sessions/new'
   get 'users/new'
 
+  #Post per categoria
+  get "posts/category", to: "posts#show_cat"
+
   #Ricerca
   get 'search', to: 'static_pages#search'
   get 'search_user', to: 'users#search_user'

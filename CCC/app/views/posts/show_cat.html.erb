@@ -1,0 +1,16 @@
+<% if !@posts.nil? && !@posts.first.nil? %>
+  <% provide(:title, @posts.first.category) %>
+  <h1>Post <%= @posts.first.category %>: <%= @posts.count %></h1>
+
+  <%= will_paginate %>
+
+  <ul class="posts">
+    <%= render @posts %>
+  </ul>
+
+  <%= will_paginate %>
+
+<% else %>
+  <% provide(:title, "Errore") %>
+  <h1>Nessun post trovato</h1>
+<% end %>

@@ -19,6 +19,10 @@ class PostsController < ApplicationController
         end
     end
     
+    def show_cat
+      @posts = Post.where("category LIKE ?", cat_params[:cat]).paginate(page: params[:page])
+    end
+
     def destroy
         @post.destroy
         flash[:success] = "Post eliminato"   
@@ -35,6 +39,10 @@ class PostsController < ApplicationController
     
     private
     
+    def cat_params
+        params.permit(:cat)
+    end
+
     def post_params
         params.require(:post).permit(:content, :category, :file => [])
     end

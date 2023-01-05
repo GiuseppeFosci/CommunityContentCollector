@@ -2,7 +2,7 @@
   <%= link_to gravatar_for(post.user, size: 50), post.user %>
   <span class="user"><%= link_to post.user.name, post.user %> <%= link_to post.user.surname, post.user %>
   </span>
-  <span class="category"><%= link_to post.category, "#", class: "post-category" %></span>
+  <span class="category"><%= link_to post.category, posts_category_path(:cat => post.category), class: "link-cat" %></span>
   <span class="content", style="word-wrap: break-word">
     <%= post.content %>
     <%if post.files.attached? %>
