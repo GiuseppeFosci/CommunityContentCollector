@@ -5,7 +5,7 @@
     <span class="category"><%= link_to post.category, posts_category_path(:cat => post.category), class: "link-cat" %></span>
     <span class="content", style="word-wrap: break-word">
     <%= post.content %>
-    <%if @post.files.attached? %>
+    <%if post.files.attached? %>
         <br>
         <% post.files.each do |f| %>
         <%= link_to f.filename, rails_blob_path(f, disposition: "attachment") %>
@@ -24,5 +24,17 @@
     </span>
     
     <span class="comments">
+      <% if post.comments.any? %>
+        <h3>Commenti: <%= post.comments.count %></h3>
+              <ol class="comments">
+		        <%= render @comments %>
+              </ol>
+        <%= will_paginate @comments %>
+              
+      <% end %>
+		<div class="comment-form">
+		  <h4>Lascia un commento</h4>
+		  <%= render 'shared/comment_form' %>
+		</div>
     </span>
-    </li>
+</li>

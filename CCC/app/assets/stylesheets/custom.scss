@@ -285,6 +285,21 @@ input {
     color: red;
   }
 
+
+  /* Comments */
+  
+.comments {
+  list-style: none;
+  padding: 0;
+  margin-left: 30px;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  
+  
+}
+
   /* Posts */
 
   .posts {
@@ -305,6 +320,10 @@ input {
         display: block;
         padding: 5px 0;
       }
+    }
+    
+    .commenti {
+      margin-left: 60px;
     }
     
     .elimina{

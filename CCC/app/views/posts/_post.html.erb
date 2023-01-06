@@ -15,7 +15,15 @@
   <span class="timestamp">Posted <%= time_ago_in_words(post.created_at) %> ago.
   <%= link_to "Visualizza post", post %>
   </span>
- 
+  
+    <% if post.comments.any? %>
+        <span class="commenti">
+      <%= link_to(post) do %>
+        Visualizza commenti (<%= post.comments.count %>)
+      <% end %>
+      </span>
+    <% end %>
+  
   <span class="elimina"> 
   <% if current_user?(post.user) %>
     <%= link_to "Elimina", post, data: { "turbo-method": :delete, turbo_confirm: "Sei sicuro?" } %>

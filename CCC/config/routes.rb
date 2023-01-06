@@ -30,11 +30,11 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
+  resources :posts
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
  
- 
-  resources :posts # only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy] 
   resources :relationships, only: [:create, :destroy]
   get '/posts', to: 'static_pages#home'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

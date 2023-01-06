@@ -1,0 +1,10 @@
+<%= form_with(model: @comment) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="field">
+      <%= f.text_area :content, placeholder: "Commenta" %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :post_id, value: @post.id %>
+    </div>
+
+    <%= f.submit "Invia", class: "btn btn-primary" %>
+<% end %>
