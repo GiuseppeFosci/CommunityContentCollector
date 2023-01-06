@@ -1,7 +1,7 @@
 <%= form_with(model: @post) do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="field">
-      <%= f.select(:category, [["Ingegneria", "Ingegneria"], ["Economia", "Economia"]]) %> 
+      <%= f.select(:category, [["Archeologia","Archeologia"], ["Biologia", "Biologia"], ["Economia", "Economia"], ["Ingegneria", "Ingegneria"], ["Lettere", "Lettere"], ["Lingue", "Lingue"], ["Medicina", "Medicina"]]) %> 
       <%= f.text_area :content, placeholder: "Crea nuovo post" %>
     </div>
 
