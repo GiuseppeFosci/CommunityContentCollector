@@ -1,0 +1,8 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<p align: "left">Condividi il post su:</p>
+<div id="social">
+  <var></var>
+  <%= link_to "", "http://facebook.com/sharer?=#{request.original_url}", class: "fa fa-facebook-square fa-4x" %>
+  <%= link_to "", "http://twitter.com/share?text=#{@post.content[0,100]}&url=#{request.original_url}&hashtags=#{@post.category}", class: "fa fa-twitter-square fa-4x", target: :_blank %>
+</div>
+
