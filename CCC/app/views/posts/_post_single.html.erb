@@ -18,6 +18,7 @@
     <% end %>
     </span>
     <span class="timestamp">Posted <%= time_ago_in_words(post.created_at) %> ago.
+    <%= link_to "Modifica post", edit_post_path(post), class: "link-cat" %>
     </span>
     <span class="comments">
       <% if post.comments.any? %>

@@ -8,6 +8,20 @@ class PostsController < ApplicationController
       @comment = Comment.new 
     end
 
+    def edit
+      @post=Post.find(params[:id])
+    end
+
+    def update
+      @post = Post.find(params[:id])
+        if @post.update(post_params)
+          flash[:success] = "Post aggiornato"
+          redirect_to @post
+        else
+          render 'edit', status: :unprocessable_entity
+        end
+    end
+
     def create
         @post = current_user.posts.build(post_params)
 
@@ -48,6 +62,8 @@ class PostsController < ApplicationController
     def post_params
         params.require(:post).permit(:content, :category, :file => [])
     end
+    
+    
 
     def correct_user
       @post = current_user.posts.find_by(id: params[:id])

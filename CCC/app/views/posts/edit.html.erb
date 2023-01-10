@@ -1,0 +1,16 @@
+<% provide(:title, "Modifica post") %>
+<h1>Modifica Post</h1>
+<div class="field">
+
+  <%= form_with(model: @post) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    
+    <%= f.label :category, "Categoria" %>
+    <%= f.select(:category, [["Archeologia","Archeologia"], ["Biologia", "Biologia"], ["Economia", "Economia"], ["Ingegneria", "Ingegneria"], ["Lettere", "Lettere"], ["Lingue", "Lingue"], ["Medicina", "Medicina"]]) %> 
+    
+    <%= f.label :content, "Contenuto" %>
+    <%= f.text_area :content, rows: 10 %>
+
+    <%= f.submit "Salva modifiche", class: "btn btn-primary" %>
+  <% end %>
+</div>
