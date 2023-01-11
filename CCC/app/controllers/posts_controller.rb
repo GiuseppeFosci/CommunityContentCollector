@@ -25,19 +25,21 @@ class PostsController < ApplicationController
 
     def create
         @post = current_user.posts.build(post_params)
-        msg=""
-        #Gestione antivirus VirusTotalAPI
-        if params[:post][:files].length>1
-          msg+="Nessuno virus rilevato! "
-          flash[:warning] = "Scansione antivirus in corso..."
-          scan=VirustotalAPI::File.upload(params[:post][:files].last.path, ENV["VIRUS_API_KEY"])
-          analysis=VirustotalAPI::Analysis.find(scan.id, ENV["VIRUS_API_KEY"])
-          file_id=analysis.report['meta']['file_info']['sha256']
-          result=VirustotalAPI::File.find(file_id, ENV["VIRUS_API_KEY"]).report
-          if result['data']['attributes']['last_analysis_results']['ClamAV']["category"]=="malicious"
-            flash[:error] = "Errore creazione post: file malevolo"
-            @post.destroy
-            redirect_to root_url
+        if @post.valid?
+          msg=""
+          #Gestione antivirus VirusTotalAPI
+          if params[:post][:files].length>1
+            msg+="Nessuno virus rilevato! "
+            flash[:warning] = "Scansione antivirus in corso..."
+            scan=VirustotalAPI::File.upload(params[:post][:files].last.path, ENV["VIRUS_API_KEY"])
+            analysis=VirustotalAPI::Analysis.find(scan.id, ENV["VIRUS_API_KEY"])
+            file_id=analysis.report['meta']['file_info']['sha256']
+            result=VirustotalAPI::File.find(file_id, ENV["VIRUS_API_KEY"]).report
+            if result['data']['attributes']['last_analysis_results']['ClamAV']["category"]=="malicious"
+              flash[:error] = "Errore creazione post: file malevolo"
+              @post.destroy
+              redirect_to root_url
+            end
           end
         end
         @post.files.attach(params[:post][:files])

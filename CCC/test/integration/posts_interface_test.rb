@@ -27,7 +27,7 @@ class PostsInterfaceTest < PostsInterface
     category = "Ingegneria"
     content = "This post really ties the room together"
     assert_difference 'Post.count', 1 do
-      post posts_path, params: { post: { content: content, category: category } }
+      post posts_path, params: { post: { content: content, category: category, files: [] } }
     end
     assert_redirected_to root_url
     follow_redirect!
