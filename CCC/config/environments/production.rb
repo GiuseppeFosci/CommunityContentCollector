@@ -91,4 +91,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Api key for VirusTotal
+  config.VIRUS_API_KEY= "2f1ae3f0e4cc1d74eabc6ed7ab8fdf22479c0d049841c176e50a54f90549dce0"
 end
