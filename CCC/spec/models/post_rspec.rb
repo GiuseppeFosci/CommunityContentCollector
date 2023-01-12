@@ -1,13 +1,11 @@
 require "rails_helper"
-require "rspec_helper"
-
-RSpec.configure do |c|
-    c.include Rspec_helper
-end
 
 RSpec.describe Post, type: :model do
-
-    fixtures :users, :posts
+    
+    before(:all) do
+        @user1 = create(:user)
+        @post1 = create(:post)
+    end
     
     describe "validations" do
         
