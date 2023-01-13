@@ -6,6 +6,8 @@ FactoryBot.define do
     email {"joe.green@uniroma1.it"}
     password {"password"}
     password_confirmation {"password"}
+    activated {true}
+    activated_at {Time.now}
   end
   
   trait :with_post do

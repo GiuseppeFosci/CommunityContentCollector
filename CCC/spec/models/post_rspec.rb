@@ -7,6 +7,11 @@ RSpec.describe Post, type: :model do
         @user1 = @post.user
     end
     
+    after(:all) do
+        @post.destroy
+        @user1.destroy
+    end
+    
     describe "validations" do
         
         it "post should be valid" do

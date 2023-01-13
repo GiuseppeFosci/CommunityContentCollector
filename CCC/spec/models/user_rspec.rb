@@ -6,6 +6,10 @@ RSpec.describe User, type: :model do
         @user1 = create(:user)
     end
     
+    after(:all) do
+        @user1.destroy
+    end
+    
     describe "Validations" do
 
         it "should be valid" do
