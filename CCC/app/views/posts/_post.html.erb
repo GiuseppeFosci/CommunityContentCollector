@@ -25,7 +25,7 @@
     <% end %>
   
   <span class="elimina"> 
-  <% if current_user?(post.user) %>
+  <% if current_user?(post.user) || current_user.admin? %>
     <%= link_to "Elimina", post, data: { "turbo-method": :delete, turbo_confirm: "Sei sicuro?" } %>
   <% end %>
   </span>

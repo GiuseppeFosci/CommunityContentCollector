@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy]
-    before_action :correct_user, only: :destroy
+    before_action :correct_user, only: [:destroy, :update, :edit]
     
     def show
       @post= Post.find(params[:id])
@@ -83,6 +83,7 @@ class PostsController < ApplicationController
 
     def correct_user
       @post = current_user.posts.find_by(id: params[:id])
+      @post = Post.find_by(id: params[:id]) if current_user.admin?
       redirect_to root_url, status: :see_other if @post.nil?
     end
 
