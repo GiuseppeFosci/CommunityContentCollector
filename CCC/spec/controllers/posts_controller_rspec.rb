@@ -54,6 +54,34 @@ RSpec.describe PostsController, type: :request do
             post=@user1.posts.last
           end.to change{post.content}.from(@post.content).to("Updated content")
         end
-          
+
+        it "should be able to create a comment" do
+          post comments_path, params: { comment: {content: "Nuovo Commento", user_id: @user1.id, post_id: @post.id} }
+          expect(flash).to_not be_empty
+          expect(@post.comments).to_not be_empty 
+        end
+        
+        it "should be able to delete own comment" do
+          post comments_path, params: { comment: {content: "Nuovo Commento", user_id: @user1.id, post_id: @post.id} }
+          expect(flash).to_not be_empty
+
+            expect do
+              delete comment_path(Comment.last) 
+            
+            end.to change{@post.comments.count}.from(1).to(0)
+            expect(flash).to_not be_empty
+        end
+        
+        it "should be able to delete own comment" do
+          post comments_path, params: { comment: {content: "Nuovo Commento", user_id: @user1.id, post_id: @post.id} }
+          expect(flash).to_not be_empty
+
+            expect do
+              delete comment_path(Comment.last) 
+            
+            end.to change{@post.comments.count}.from(1).to(0)
+            expect(flash).to_not be_empty
+        end 
+   
     end
 end

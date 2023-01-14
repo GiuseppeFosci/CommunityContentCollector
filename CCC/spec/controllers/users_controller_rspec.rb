@@ -86,9 +86,10 @@ RSpec.describe UsersController, type: :request do
             log_in_as(@user1)
             expect do
                 delete user_path(@user2)
-            end.to change {User.count}.from(2).to(1)
-            
+            end.to change {User.count}.from(2).to(1)      
         end
+
+        
   
     end
 end
