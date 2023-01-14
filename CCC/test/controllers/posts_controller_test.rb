@@ -22,7 +22,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should redirect destroy for wrong post" do
-    log_in_as(users(:michael))
+    log_in_as(users(:lana))
     post = posts(:ants)
     assert_no_difference 'Post.count' do
       delete post_path(post)

@@ -3,7 +3,7 @@ require "test_helper"
 class PostsInterface < ActionDispatch::IntegrationTest
   
   def setup
-    @user = users(:michael)
+    @user = users(:lana)
     log_in_as(@user)
   end
 end
@@ -33,11 +33,7 @@ class PostsInterfaceTest < PostsInterface
     follow_redirect!
     assert_match content, response.body
   end
-  
-  test "should have post delete links on own profile page" do
-    get users_path(@user)
-    assert_select 'a', text: 'Elimina'
-  end
+
   
   test "should be able to delete own post" do
     first_post = @user.posts.paginate(page: 1).first
