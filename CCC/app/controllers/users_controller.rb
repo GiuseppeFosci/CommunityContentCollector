@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   # GET /users 
   def index
-    @users = User.where(activated: true).paginate(page: params[:page])
+    @users = User.where(activated: true).order('name ASC').paginate(page: params[:page])
   end
 
   # GET /users/[:id]

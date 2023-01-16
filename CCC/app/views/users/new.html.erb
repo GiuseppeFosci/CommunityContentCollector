@@ -23,28 +23,7 @@
 
     <% end %>
     
-    <br>
-    <div class="google-signup">
-      <script src="https://accounts.google.com/gsi/client" async defer></script>
-
-      <div id="g_id_onload"
-        data-client_id="676271951973-1nhi134ag2edhefulklfqinnbkbajshc.apps.googleusercontent.com"
-        data-context="signup"
-        data-ux_mode="popup"
-        data-login_uri="/google-users"
-        data-auto_prompt="false">
-      </div>
-
-      <div class="g_id_signin"
-        data-type="standard"
-        data-shape="rectangular"
-        data-theme="outline"
-        data-text="signin_with"
-        data-size="large"
-        data-locale="it"
-        data-logo_alignment="left">
-      </div>
-    </div>
+    <%= render 'google_new' %>
     
   </div>
 </div>
