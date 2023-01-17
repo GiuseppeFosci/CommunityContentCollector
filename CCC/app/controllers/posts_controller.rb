@@ -25,6 +25,7 @@ class PostsController < ApplicationController
 
     def create
         @post = current_user.posts.build(post_params)
+        @post.files.attach(params[:post][:files])
         if @post.valid?
           msg=""
           #Gestione antivirus VirusTotalAPI
@@ -42,7 +43,6 @@ class PostsController < ApplicationController
             end
           end
         end
-        @post.files.attach(params[:post][:files])
         if @post.save
           msg+="Post creato!"
           flash[:success] = msg
