@@ -11,12 +11,12 @@ User.create!(name: "Example", surname: "User", email: "example.user@uniroma1.it"
 end
 
 # Generate posts for a subset of users.
-users = User.order(:created_at).take(6)
+users = User.order(:created_at).take(60)
 
-50.times do
+5.times do
     content = Faker::Lorem.sentence(word_count: 5)
-    category = ["Archeologia", "Biologia", "Economia", "Ingegneria", "Lettere", "Lingue", "Medicina"].sample
-    users.each { |user| user.posts.create!(content: content, category: category) }
+    category = ["Archeologia", "Biologia", "Economia", "Ingegneria", "Lettere", "Lingue", "Medicina"]
+    users.each { |user| user.posts.create!(content: content, category: category.sample) }
 end
 
 # Create following relationships.

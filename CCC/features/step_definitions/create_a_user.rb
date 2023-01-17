@@ -1,7 +1,7 @@
 Given("I'm not logged in") do
     visit signup_path
-    fill_in "user_name", with: "Nome Utente"
-    fill_in "user_surname", with: "Cognome Utente"
+    fill_in "user_name", with: "Nome"
+    fill_in "user_surname", with: "Cognome"
     fill_in "user_email", with: "email.utente@uniroma1.it"
     fill_in "user_password", with: "Password Utente"
     fill_in "user_password_confirmation", with: "Password Utente"

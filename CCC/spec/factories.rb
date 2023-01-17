@@ -10,6 +10,7 @@ FactoryBot.define do
     activated_at {Time.now}
   end
   
+  #Associazione post-utente
   trait :with_post do
     after(:create) do |user|
       create(:post, user_id: user.id)

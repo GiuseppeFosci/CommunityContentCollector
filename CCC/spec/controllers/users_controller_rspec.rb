@@ -19,7 +19,7 @@ RSpec.describe UsersController, type: :request do
             expect(response).to have_http_status(:success)
         end
 
-        it "should redirect index when not logged in" do
+        it "should redirect index (all users) when not logged in" do
             get users_path
             assert_redirected_to login_url
         end
@@ -72,12 +72,12 @@ RSpec.describe UsersController, type: :request do
             assert_redirected_to root_url
         end
         
-        it "should redirect following when not logged in" do
+        it "should redirect following page when not logged in" do
             get following_user_path(@user1)
             assert_redirected_to login_url
         end
         
-        it "should redirect followers when not logged in" do
+        it "should redirect followers page when not logged in" do
             get followers_user_path(@user1)
             assert_redirected_to login_url
         end

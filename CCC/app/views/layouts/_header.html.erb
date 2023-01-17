@@ -13,16 +13,17 @@
     </button>
     </div>
 
+    <% if logged_in? %>
+      <ul id="navbar-menu" class="nav navbar-nav navbar-left collapse navbar-collapse">
+      <li><%= link_to "Cerca", search_path %></li>
+           <li>
+             <a class="navbar-brand" href="/search" >
+               <%= image_tag "lente.png", width: 30, height:30, id: "glass" %>
+             </a>
+           </li>
+       </ul>
+    <% end %>
 
-    <ul id="navbar-menu" class="nav navbar-nav navbar-left collapse navbar-collapse">
-    <li><%= link_to "Cerca", search_path %></li>
-         <li>
-           <a class="navbar-brand" href="/search" >
-             <%= image_tag "lente.png", width: 30, height:30, id: "glass" %>
-           </a>
-         </li>
-     </ul>
-    
     <ul id="navbar-menu"
     class="nav navbar-nav navbar-right collapse navbar-collapse">
          <ul class="nav navbar-nav navbar-right">
