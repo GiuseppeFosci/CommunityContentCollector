@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-
+  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :correct_user, only: [:destroy]
   def new
     @comment = Comment.new
   end
@@ -32,6 +33,12 @@ class CommentsController < ApplicationController
   
   def comment_params
     params.require(:comment).permit(:content, :user_id, :post_id)
+  end
+
+  def correct_user
+    @comment = current_user.comments.find_by(id: params[:id])
+    @comment = Comment.find_by(id: params[:id]) if current_user.admin?
+    redirect_to root_url, status: :see_other if @comment.nil?
   end
 
 end
